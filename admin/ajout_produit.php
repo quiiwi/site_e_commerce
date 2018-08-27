@@ -17,7 +17,7 @@ if(!empty($_POST)){
 
     $photo_bdd = ''; // par défaut la photo est vide en BDD.
 
-    debug($_FILES);             
+    //debug($_FILES);             
 
     if (!empty($_FILES['photo']['name'])) { //s'il y a un nom de fichier dans la superglaboale $_FILES, c'est que je suis en train d'uploader un fichier. L'induce "photo" correspond au name du champ dans le formulaire.
 
