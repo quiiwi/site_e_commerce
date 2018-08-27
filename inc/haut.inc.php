@@ -36,19 +36,19 @@
             	<?php
 					echo '<li> <a class="nav-link" href="'. RACINE_SITE .'boutique.php">Boutique</a></li>';
 
-					//menu si internaute connecté :
+					//menu si internaute connectÃ© :
 
 					if (internauteEstConnecte()){
 						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'profil.php">Profil</a></li>';
-						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'connexion.php?action=deconnexion">Se déconnecter</a></li>';
-					} else { //s'il n'est pas connecté
+						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'connexion.php?action=deconnexion">Se dÃ©connecter</a></li>';
+					} else { //s'il n'est pas connectÃ©
 						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'inscription.php">Inscription</a></li>';
 						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'connexion.php">Connexion</a></li>';
 					}
 
 					//menu si internaute est admin :
 					if (internauteEstConnecteEtAdmin()){
-						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'gestion_boutique.php">Gestion de la boutique</a></li>';
+						echo '<li> <a class="nav-link" href="'. RACINE_SITE .'admin/gestion_boutique.php">Gestion de la boutique</a></li>';
 					}
 				?>
         	</ul>
@@ -59,7 +59,7 @@
    
     <!-- Page Content -->
     <div class="container" style="min-height: 80vh;">
-		<!-- ici nous aurons le contenu spécifique de notre page -->
+		<!-- ici nous aurons le contenu spÃ©cifique de notre page -->
 
 
 

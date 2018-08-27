@@ -1,5 +1,22 @@
 <?php
 require_once 'inc/init.inc.php';
+
+// 2- dÃ©connexion de l'internaute :
+
+if (isset($_GET['action']) && $_GET['action'] == 'deconnexion'){ // si l'internaute a cliquÃ© sur "se dÃ©connecter"
+
+	session_destroy(); // on supprime toute la session du membre. Rapppel : cette instruction ne s'exÃ©cute qu'en fin des script.
+
+}
+
+// 3- On vÃ©rifie si internaute est dÃ©jÃ  connectÃ© :
+
+if (internauteEstConnecte()){ //s'il est connectÃ©, on le renvoie vers son profil :
+	header('location:profil.php');
+	exit(); // pour quitter le script
+	
+}
+
 // debug($_POST);
 
 // 1- TRAITEMENT du formulaire :
@@ -24,19 +41,19 @@ if(!empty($_POST)){
 
 		$membre = executeRequete("SELECT * FROM membre WHERE pseudo = :pseudo AND mdp = :mdp", array( ':pseudo' => $_POST['pseudo'], ':mdp' => $_POST['mdp']));
 
-		if ($membre -> rowCount() >0 ){ // si le nombre de ligne est supérieur à 0, alors le login et le mdp existent ensemble en bdd
-			//on crée une session avec les informations du membre : 
+		if ($membre -> rowCount() >0 ){ // si le nombre de ligne est supï¿½rieur ï¿½ 0, alors le login et le mdp existent ensemble en bdd
+			//on crï¿½e une session avec les informations du membre : 
 
-			$informations = $membre->fetch(PDO::FETCH_ASSOC); // on fait un fetch pour transformer l'objet $membre en un array associatif qui contient en indices le nom de tous les champ de la requête
+			$informations = $membre->fetch(PDO::FETCH_ASSOC); // on fait un fetch pour transformer l'objet $membre en un array associatif qui contient en indices le nom de tous les champ de la requï¿½te
 			debug($informations);
 
-			$_SESSION['membre'] = $informations; // nous créons une session avec les infos du membre qui proviennent de la bdd
+			$_SESSION['membre'] = $informations; // nous crï¿½ons une session avec les infos du membre qui proviennent de la bdd
 
 			header('location:profil.php');
 			exit(); // On redirige l'internaute vers sa page de profil, et on quitte ce script avec exit()
 		
 		} else {
-			// sinon c'est qu'il y a erreur sur les identifiants (isl n'existent pas ou pas pour le même membre)
+			// sinon c'est qu'il y a erreur sur les identifiants (isl n'existent pas ou pas pour le mï¿½me membre)
 			$contenu .= '<div class="bg-danger"> Erreur sur les identifiants. </div>';
 		}
 	
