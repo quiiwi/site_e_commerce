@@ -8,7 +8,7 @@ if (!internauteEstConnecteEtAdmin()) {
 }
 
 // 3- Suppression d'un produit :
-debug($_GET);
+//debug($_GET);
 
 if(isset($_GET['id_produit'])){
     $resultat = executeRequete("DELETE FROM produit WHERE id_produit = :id_produit", array('id_produit' => $_GET['id_produit']));

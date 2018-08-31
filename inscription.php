@@ -1,7 +1,7 @@
 <?php
 require_once 'inc/init.inc.php';
 
-$inscription = false; // pour savoir si l'internaute vient de s'inscrire (on mettra la variable à true) et ne plus afficher le formulaire d'inscription.
+$inscription = false; // pour savoir si l'internaute vient de s'inscrire (on mettra la variable ï¿½ true) et ne plus afficher le formulaire d'inscription.
 
 //var_dump($_POST);
 
@@ -9,34 +9,34 @@ $inscription = false; // pour savoir si l'internaute vient de s'inscrire (on met
 if(!empty($_POST)){ //si le formulaire est soumis
 	
 	// Validation des champs du formulaire :
-	if (!isset($_POST['pseudo']) || strlen($_POST['pseudo']) <4 || strlen($_POST['pseudo']) >20    ) $contenu .= '<div class="bg-danger">Le pseudo doit contenir entre 4 et 20 caractères.</div>';
+	if (!isset($_POST['pseudo']) || strlen($_POST['pseudo']) <4 || strlen($_POST['pseudo']) >20    ) $contenu .= '<div class="bg-danger">Le pseudo doit contenir entre 4 et 20 caractï¿½res.</div>';
 
-	if (!isset($_POST['mdp']) || strlen($_POST['mdp']) <4 || strlen($_POST['mdp']) >20    ) $contenu .= '<div class="bg-danger">Le mot de passe doit contenir entre 4 et 20 caractères.</div>';
+	if (!isset($_POST['mdp']) || strlen($_POST['mdp']) <4 || strlen($_POST['mdp']) >20    ) $contenu .= '<div class="bg-danger">Le mot de passe doit contenir entre 4 et 20 caractï¿½res.</div>';
 
-	if (!isset($_POST['nom']) || strlen($_POST['nom']) <1 || strlen($_POST['nom']) >20    ) $contenu .= '<div class="bg-danger">Le nom doit contenir entre 1 et 20 caractères.</div>';
+	if (!isset($_POST['nom']) || strlen($_POST['nom']) <1 || strlen($_POST['nom']) >20    ) $contenu .= '<div class="bg-danger">Le nom doit contenir entre 1 et 20 caractï¿½res.</div>';
 
-	if (!isset($_POST['prenom']) || strlen($_POST['prenom']) <1 || strlen($_POST['prenom']) >20    ) $contenu .= '<div class="bg-danger">Le prenom doit contenir entre 1 et 20 caractères.</div>';
+	if (!isset($_POST['prenom']) || strlen($_POST['prenom']) <1 || strlen($_POST['prenom']) >20    ) $contenu .= '<div class="bg-danger">Le prenom doit contenir entre 1 et 20 caractï¿½res.</div>';
 
-	if (!isset($_POST['ville']) || strlen($_POST['ville']) <2 || strlen($_POST['ville']) >20    ) $contenu .= '<div class="bg-danger">La ville doit contenir entre 2 et 20 caractères.</div>';
+	if (!isset($_POST['ville']) || strlen($_POST['ville']) <2 || strlen($_POST['ville']) >20    ) $contenu .= '<div class="bg-danger">La ville doit contenir entre 2 et 20 caractï¿½res.</div>';
 
-	if (!isset($_POST['civilite']) || ($_POST['civilite'] != 'm' && $_POST['civilite'] != 'f'  )) $contenu .= '<div class="bg-danger">La civilité est incorrecte.</div>';
+	if (!isset($_POST['civilite']) || ($_POST['civilite'] != 'm' && $_POST['civilite'] != 'f'  )) $contenu .= '<div class="bg-danger">La civilitï¿½ est incorrecte.</div>';
 
-	if (!isset($_POST['adresse']) || strlen($_POST['adresse']) <5 || strlen($_POST['adresse']) >50    ) $contenu .= '<div class="bg-danger">L\'adresse doit contenir entre 3 et 50 caractères.</div>';
+	if (!isset($_POST['adresse']) || strlen($_POST['adresse']) <5 || strlen($_POST['adresse']) >50    ) $contenu .= '<div class="bg-danger">L\'adresse doit contenir entre 3 et 50 caractï¿½res.</div>';
 
-	if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) $contenu .= '<div class="bg-danger">L\'email n\'est pas correct.</div>'; //filter_var,FILTER_VALID_EMAIL permet de vérifier si l'email est correct
+	if (!isset($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) $contenu .= '<div class="bg-danger">L\'email n\'est pas correct.</div>'; //filter_var,FILTER_VALID_EMAIL permet de vï¿½rifier si l'email est correct
 
-	if (!isset($_POST['code_postal']) || !ctype_digit($_POST['code_postal']) || strlen($_POST['code_postal']) != 5) $contenu .= '<div class="bg-danger">Le code postal est incorrect.</div>';  // ctype_digit() permet de vérifier qu'un string contient un nombre entier (utilisé pour les formulaires qui ne retournent que des string avec le type "text")
+	if (!isset($_POST['code_postal']) || !ctype_digit($_POST['code_postal']) || strlen($_POST['code_postal']) != 5) $contenu .= '<div class="bg-danger">Le code postal est incorrect.</div>';  // ctype_digit() permet de vï¿½rifier qu'un string contient un nombre entier (utilisï¿½ pour les formulaires qui ne retournent que des string avec le type "text")
 
 	//-----------
-	//Si pas d'erreur sur le formulaire, on vérifie que le pseudo est disponible dans la BDD :
+	//Si pas d'erreur sur le formulaire, on vï¿½rifie que le pseudo est disponible dans la BDD :
 	if (empty($contenu)){
-		$membre = executeRequete("SELECT * FROM membre WHERE pseudo = :pseudo", array(':pseudo' => $_POST['pseudo'])); //on sélectionne en base les éventuels membre dont le pseudo correspond au pseudo donné par l'internaute lors de l'inscription
+		$membre = executeRequete("SELECT * FROM membre WHERE pseudo = :pseudo", array(':pseudo' => $_POST['pseudo'])); //on sï¿½lectionne en base les ï¿½ventuels membre dont le pseudo correspond au pseudo donnï¿½ par l'internaute lors de l'inscription
 
 
-		if($membre -> rowCount() > 0) { // si la requête retourne 1 ou plusieurs résultats c'est que le pseudo existe en BDD'
+		if($membre -> rowCount() > 0) { // si la requï¿½te retourne 1 ou plusieurs rï¿½sultats c'est que le pseudo existe en BDD'
 			$contenu .= '<div class="bg-danger"> Le pseudo est indisponible. Veuillez en choisir un autre. </div>';
 		} else {
-			// sinon, le pseudo étant disponible, on enregistre le membre en BDD :
+			// sinon, le pseudo ï¿½tant disponible, on enregistre le membre en BDD :
 
 			//debug($_POST);
 
@@ -52,7 +52,7 @@ if(!empty($_POST)){ //si le formulaire est soumis
 					  ':adresse' => $_POST['adresse']
 				));
 
-			$contenu .= '<div class="bg-success"> Vous êtes inscrit à notre site. <a href="connexion.php"> cliquez ici pour vous connecter. </a>  </div>';
+			$contenu .= '<div class="bg-success"> Vous ï¿½tes inscrit ï¿½ notre site. <a href="connexion.php"> cliquez ici pour vous connecter. </a>  </div>';
 
 			$inscription = true; // pour ne plus afficher le formulaire sur cette page
 
@@ -67,12 +67,12 @@ if(!empty($_POST)){ //si le formulaire est soumis
 
 //------------------ AFFICHAGE ---------------------
 require_once 'inc/haut.inc.php';
-echo $contenu; // pour afficher les messages à l'internaute'
+echo $contenu; // pour afficher les messages ï¿½ l'internaute'
 ?>
 	<h1 class="mt-4">Inscription</h1>
 <?php
 
-if(!$inscription) : //(!inscription) équivaut à ($inscription == false), c'est à dire que nous entrons dans la condition si $inscription vaut false.syntaxe en if (condition) : ... enfif.
+if(!$inscription) : //(!inscription) Ã©quivaut Ã  ($inscription == false), c'est Ã  dire que nous entrons dans la condition si $inscription vaut false.syntaxe en if (condition) : ... enfif.
 ?>
 
 	<p>Veuillez renseigner le formulaire pour vous inscrire.</p>
@@ -93,7 +93,7 @@ if(!$inscription) : //(!inscription) équivaut à ($inscription == false), c'est à
 		<label for="email">Email</label><br>
 		<input type="text" name="email" id="email" value=""><br><br>
 
-		<label >civilité</label> <br>
+		<label >civilitï¿½</label> <br>
 		<input type="radio" name="civilite" id="" value="m" checked> Homme
 		<input type="radio" name="civilite" id="" value="f"> Femme <br>
 
