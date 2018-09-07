@@ -47,7 +47,7 @@ if(!empty($_POST)){
 			$informations = $membre->fetch(PDO::FETCH_ASSOC); // on fait un fetch pour transformer l'objet $membre en un array associatif qui contient en indices le nom de tous les champ de la requ�te
 			debug($informations);
 
-			
+			$_SESSION['membre'] = $informations;
 			 // nous cr�ons une session avec les infos du membre qui proviennent de la bdd
 
 			header('location:profil.php');
